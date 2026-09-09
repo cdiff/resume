@@ -49,13 +49,35 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 24px;
+      gap: 32px;
       padding-bottom: 48px;
       border-bottom: 1.5px solid var(--border);
       margin-bottom: 56px;
     }
 
-    .header-left h1 {
+    .header-left {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    /* Profile photo */
+    .profile-photo {
+      width: 130px;
+      height: 160px;
+      border-radius: 14px;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+      transition: box-shadow 0.2s;
+    }
+    .profile-photo:hover {
+      box-shadow: 0 8px 28px rgba(37,99,235,0.18);
+    }
+
+    .header-info h1 {
       font-size: 36px;
       font-weight: 700;
       letter-spacing: -0.03em;
@@ -89,7 +111,7 @@
       font-size: 15px;
       color: var(--text-secondary);
       line-height: 1.65;
-      max-width: 440px;
+      max-width: 400px;
     }
 
     .header-right {
@@ -149,47 +171,93 @@
       background: var(--border);
     }
 
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 10px;
-    }
-
-    .skill-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
+    /* About */
+    .about-box {
       background: var(--surface);
       border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .about-box p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+    .about-box strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .about-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--accent-subtle);
+      border-radius: 100px;
+      padding: 2px 10px;
+      margin: 0 2px;
     }
 
-    .skill-cat {
-      font-size: 11px;
-      color: var(--text-muted);
-      width: 68px;
-      flex-shrink: 0;
-      font-weight: 500;
+    /* Skills — simple list */
+    .skills-table {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
 
-    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .sk-row {
+      display: contents;
+    }
+    .sk-row:not(:last-child) .sk-cat,
+    .sk-row:not(:last-child) .sk-vals {
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .sk-cat {
+      padding: 14px 20px;
+      background: var(--surface);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+    }
+
+    .sk-vals {
+      padding: 12px 20px;
+      background: var(--bg);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
 
     .tag {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 500;
       color: var(--tag-text);
       background: var(--tag-bg);
-      padding: 2px 9px;
-      border-radius: 100px;
+      padding: 3px 10px;
+      border-radius: 6px;
       border: 1px solid var(--border);
     }
     .tag.accent {
       background: var(--accent-light);
       color: var(--accent);
       border-color: var(--accent-subtle);
+      font-weight: 600;
     }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
     /* Background cards */
     .info-row {
@@ -437,11 +505,13 @@
     @media (max-width: 640px) {
       .container { padding: 40px 20px; }
       header { flex-direction: column; }
+      .header-left { flex-direction: column; gap: 16px; }
       .header-right { align-items: flex-start; }
       .project-top { flex-direction: column; }
       .project-meta { align-items: flex-start; }
-      .header-left h1 { font-size: 28px; }
+      .header-info h1 { font-size: 28px; }
       .cases-grid { grid-template-columns: 1fr; }
+      .skills-categories { grid-template-columns: 1fr; }
       footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -451,9 +521,12 @@
 
   <header>
     <div class="header-left">
-      <div class="role-badge">Android Developer</div>
-      <h1>이태수</h1>
-      <p class="tagline">사용자의 경험과 개발자의 유지 보수를<br>함께 고민하는 Android 개발자</p>
+      <img src="profile.jpg" alt="이태수 프로필 사진" class="profile-photo" />
+      <div class="header-info">
+        <div class="role-badge">Android Developer</div>
+        <h1>이태수</h1>
+        <p class="tagline">사용자의 경험과 개발자의 유지 보수를<br>함께 고민하는 Android 개발자</p>
+      </div>
     </div>
     <div class="header-right">
       <a href="tel:010-2994-9272" class="contact-item">
@@ -471,53 +544,76 @@
     </div>
   </header>
 
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="about-box">
+      <p>
+        Kotlin과 Jetpack Compose를 주력으로 하는 Android 개발자입니다.
+        단순히 동작하는 코드를 넘어, <strong>유지보수하기 좋은 구조</strong>와
+        <strong>사용자가 체감하는 성능</strong>을 함께 고민합니다.<br><br>
+        빠르게 변하는 AI 트렌드를 따라가기 위해 <strong>직접 써보며 익히는</strong> 방식을 택하고 있습니다.
+        <span class="about-highlight">⚡ Orca</span>·<span class="about-highlight">🐦 Herdr</span> 같은
+        병렬 AI 에이전트 도구를 개발 워크플로우에 적극 도입해, 반복 작업을 자동화하고 컨텍스트 분리가 필요한
+        작업은 병렬 서브에이전트로 처리하는 방식에 익숙합니다.<br><br>
+        새로운 LLM·AI SDK가 나오면 <strong>개인 프로젝트에서 먼저 검증</strong>한 뒤 실무에 적용하는
+        사이클을 유지하며, 현재는 온디바이스 모델 추론과 멀티모달 입력 처리에 관심을 두고 있습니다.
+      </p>
+    </div>
+  </section>
+
   <section id="skills">
     <p class="section-label">Skills</p>
-    <div class="skills-grid">
-      <div class="skill-row">
-        <span class="skill-cat">언어</span>
-        <div class="tags"><span class="tag accent">Kotlin</span></div>
+    <div class="skills-table">
+
+      <div class="sk-row">
+        <span class="sk-cat">Language</span>
+        <div class="sk-vals">
+          <span class="tag accent">Kotlin</span>
+        </div>
       </div>
-      <div class="skill-row">
-        <span class="skill-cat">UI</span>
-        <div class="tags"><span class="tag accent">Jetpack Compose</span></div>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">비동기</span>
-        <div class="tags">
+
+      <div class="sk-row">
+        <span class="sk-cat">Android</span>
+        <div class="sk-vals">
+          <span class="tag">Jetpack Compose</span>
+          <span class="tag">ViewModel</span>
+          <span class="tag">Navigation</span>
           <span class="tag">Coroutines</span>
           <span class="tag">Flow</span>
           <span class="tag">StateFlow</span>
           <span class="tag">Channel</span>
+          <span class="tag">WorkManager</span>
         </div>
       </div>
-      <div class="skill-row">
-        <span class="skill-cat">아키텍처</span>
-        <div class="tags">
+
+      <div class="sk-row">
+        <span class="sk-cat">Architecture</span>
+        <div class="sk-vals">
           <span class="tag">MVVM</span>
           <span class="tag">Clean Architecture</span>
+          <span class="tag">Multi-module</span>
         </div>
       </div>
-      <div class="skill-row">
-        <span class="skill-cat">DI</span>
-        <div class="tags"><span class="tag">Hilt</span></div>
+
+      <div class="sk-row">
+        <span class="sk-cat">DI / Network / DB</span>
+        <div class="sk-vals">
+          <span class="tag">Hilt</span>
+          <span class="tag">Retrofit</span>
+          <span class="tag">OkHttp</span>
+          <span class="tag">Room</span>
+        </div>
       </div>
-      <div class="skill-row">
-        <span class="skill-cat">네트워크</span>
-        <div class="tags"><span class="tag">Retrofit2</span></div>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">로컬 DB</span>
-        <div class="tags"><span class="tag">Room</span></div>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat">기타</span>
-        <div class="tags">
-          <span class="tag">WorkManager</span>
-          <span class="tag">Firebase AI</span>
+
+      <div class="sk-row">
+        <span class="sk-cat">AI / Firebase</span>
+        <div class="sk-vals">
+          <span class="tag accent">Firebase Gemini AI</span>
           <span class="tag">App Check</span>
+          <span class="tag">Firebase Auth</span>
         </div>
       </div>
+
     </div>
   </section>
 
