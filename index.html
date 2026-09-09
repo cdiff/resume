@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이태수 — Android Developer</title>
+  <meta name="description" content="사용자의 경험과 개발자의 유지 보수를 함께 고민하는 Android 개발자 이태수의 이력서입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f8f9fa;
+      --border: #e9ecef;
+      --border-light: #f1f3f5;
+      --text-primary: #111827;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --accent-subtle: #dbeafe;
+      --tag-bg: #f3f4f6;
+      --tag-text: #374151;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 32px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      padding-bottom: 48px;
+      border-bottom: 1.5px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .header-left h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .role-badge::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 440px;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 220px;
+      align-items: flex-end;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .contact-item:hover { color: var(--accent); }
+
+    .ci-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .contact-item:hover .ci-icon {
+      background: var(--accent-light);
+      border-color: var(--accent-subtle);
+    }
+
+    section { margin-bottom: 52px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+    }
+
+    .skill-cat {
+      font-size: 11px;
+      color: var(--text-muted);
+      width: 68px;
+      flex-shrink: 0;
+      font-weight: 500;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--tag-text);
+      background: var(--tag-bg);
+      padding: 2px 9px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+    .tag.accent {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: var(--accent-subtle);
+    }
+
+    /* Background cards */
+    .info-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .info-card {
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      transition: border-color 0.15s;
+    }
+    .info-card:hover { border-color: var(--border); }
+
+    .ic-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .info-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .ic-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 2px; }
+    .ic-date { font-size: 12px; color: var(--text-muted); }
+
+    .badge-award {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #d97706;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      padding: 2px 9px;
+      border-radius: 100px;
+      margin-top: 6px;
+    }
+
+    /* Project cards */
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .project-card:last-child { margin-bottom: 0; }
+
+    .project-header {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .project-title-group h2 {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .project-desc { font-size: 13.5px; color: var(--text-secondary); }
+
+    .project-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .meta-chip {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      padding: 3px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .project-links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .link-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent-subtle);
+      background: var(--accent-light);
+    }
+
+    .project-body {
+      padding: 20px 28px 24px;
+      background: var(--surface);
+    }
+
+    .project-summary {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .case-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      transition: border-color 0.15s;
+    }
+    .case-card:hover { border-color: #cbd5e1; }
+
+    .case-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .case-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .case-detail {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .metrics {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .metric {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--accent-subtle);
+      border-radius: 100px;
+      padding: 2px 9px;
+    }
+
+    /* Blog */
+    .blog-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .blog-card:hover {
+      border-color: var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .blog-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .blog-text h3 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .blog-text p { font-size: 13px; color: var(--text-secondary); }
+    .blog-arrow { margin-left: auto; color: var(--text-muted); font-size: 16px; }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media print {
+      body { font-size: 13px; }
+      .container { padding: 32px; }
+      .link-btn { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 40px 20px; }
+      header { flex-direction: column; }
+      .header-right { align-items: flex-start; }
+      .project-top { flex-direction: column; }
+      .project-meta { align-items: flex-start; }
+      .header-left h1 { font-size: 28px; }
+      .cases-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="header-left">
+      <div class="role-badge">Android Developer</div>
+      <h1>이태수</h1>
+      <p class="tagline">사용자의 경험과 개발자의 유지 보수를<br>함께 고민하는 Android 개발자</p>
+    </div>
+    <div class="header-right">
+      <a href="tel:010-2994-9272" class="contact-item">
+        <span class="ci-icon">📞</span>010-2994-9272
+      </a>
+      <a href="mailto:pasic1@naver.com" class="contact-item">
+        <span class="ci-icon">✉️</span>pasic1@naver.com
+      </a>
+      <a href="https://github.com/cdiff" target="_blank" class="contact-item">
+        <span class="ci-icon">🐙</span>github.com/cdiff
+      </a>
+      <a href="https://info62991.tistory.com" target="_blank" class="contact-item">
+        <span class="ci-icon">✍️</span>info62991.tistory.com
+      </a>
+    </div>
+  </header>
+
+  <section id="skills">
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-cat">언어</span>
+        <div class="tags"><span class="tag accent">Kotlin</span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">UI</span>
+        <div class="tags"><span class="tag accent">Jetpack Compose</span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">비동기</span>
+        <div class="tags">
+          <span class="tag">Coroutines</span>
+          <span class="tag">Flow</span>
+          <span class="tag">StateFlow</span>
+          <span class="tag">Channel</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">아키텍처</span>
+        <div class="tags">
+          <span class="tag">MVVM</span>
+          <span class="tag">Clean Architecture</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">DI</span>
+        <div class="tags"><span class="tag">Hilt</span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">네트워크</span>
+        <div class="tags"><span class="tag">Retrofit2</span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">로컬 DB</span>
+        <div class="tags"><span class="tag">Room</span></div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat">기타</span>
+        <div class="tags">
+          <span class="tag">WorkManager</span>
+          <span class="tag">Firebase AI</span>
+          <span class="tag">App Check</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <p class="section-label">Background</p>
+    <div class="info-row">
+      <div class="info-card">
+        <p class="ic-label">Education</p>
+        <h3>동의대학교</h3>
+        <p class="ic-sub">컴퓨터소프트웨어공학과</p>
+        <p class="ic-date">2019.03 — 2025.02</p>
+      </div>
+      <div class="info-card">
+        <p class="ic-label">Certificate</p>
+        <h3>정보처리기사</h3>
+        <p class="ic-sub">한국산업인력공단</p>
+        <p class="ic-date">취득 2026.09</p>
+      </div>
+      <div class="info-card">
+        <p class="ic-label">Award</p>
+        <h3>동남권 SW 품질캠프</h3>
+        <p class="ic-sub">크라우드 테스트 경진대회</p>
+        <p class="ic-date">2023</p>
+        <span class="badge-award">🏅 장려상</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <p class="section-label">Projects</p>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-top">
+          <div class="project-title-group">
+            <h2>플로우데스크</h2>
+            <p class="project-desc">B2B 고객센터 운영 플랫폼의 관리자용 앱</p>
+          </div>
+          <div class="project-meta">
+            <span class="meta-chip">📅 2025.11 — 2026.06 · 8개월</span>
+            <span class="meta-chip">👥 2인 · Android 전 기능 단독 담당</span>
+            <span class="meta-chip">🚀 Play Store 프로덕션 배포</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://play.google.com/store/apps/details?id=com.flowdesk.android" target="_blank" class="link-btn">▶ Play Store</a>
+          <a href="https://github.com/cdiff/flowdeskandroid" target="_blank" class="link-btn">🐙 GitHub</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-summary">
+          상담 목록 조회, 팀원 초대 및 권한 관리, 시스템 설정 기능을 제공하며 사용자의 Role에 따라 UI와 데이터 접근 범위가 동적으로 제어되는 권한 기반 멀티 테넌트 구조로 설계했습니다.
+        </p>
+        <div class="cases-grid">
+          <div class="case-card">
+            <p class="case-num">CASE 01 · API 중복 호출</p>
+            <p class="case-title">combine + flatMapLatest 파이프라인</p>
+            <p class="case-detail">5개 조건의 독립적 API 호출을 단일 Flow로 결합하고 debounce·flatMapLatest로 경쟁 조건을 제거했습니다.</p>
+            <div class="metrics"><span class="metric">↓ API 호출 50% 감소</span></div>
+          </div>
+          <div class="case-card">
+            <p class="case-num">CASE 02 · 권한 상태 관리</p>
+            <p class="case-title">SessionManager + StateFlow (SSOT)</p>
+            <p class="case-detail">전역 단일 권한 저장소를 구축해 화면별 분기 조회 코드를 제거하고 역할 변경 시 전 화면에 실시간 반영되도록 구성했습니다.</p>
+            <div class="metrics"><span class="metric">화면별 분기 코드 0건</span></div>
+          </div>
+          <div class="case-card">
+            <p class="case-num">CASE 03 · 생명주기 문제</p>
+            <p class="case-title">StateFlow + Channel 이벤트 분리</p>
+            <p class="case-detail">상태는 StateFlow, 일회성 이벤트는 Channel로 분리하고 collectFlow()로 안전하게 수집해 백그라운드 자원 낭비를 차단했습니다.</p>
+            <div class="metrics">
+              <span class="metric">ViewModel 40개 표준화</span>
+              <span class="metric">중복 버그 0건</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-top">
+          <div class="project-title-group">
+            <h2>영수증 쏙</h2>
+            <p class="project-desc">영수증 한 장, 3초면 끝나는 AI 경비 관리 앱</p>
+          </div>
+          <div class="project-meta">
+            <span class="meta-chip">📅 2026.07 — 2026.09 · 2개월</span>
+            <span class="meta-chip">👤 1인 · 기획·디자인·개발·배포 전담</span>
+            <span class="meta-chip">🚀 Play Store 출시 완료</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://play.google.com/store/apps/details?id=com.pasic.receipt" target="_blank" class="link-btn">▶ Play Store</a>
+          <a href="https://github.com/cdiff/Receipt" target="_blank" class="link-btn">🐙 GitHub</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-summary">
+          카메라로 영수증을 찍으면 AI가 상호명·금액·카테고리를 자동으로 채워줍니다. 월별 지출 통계 확인 및 PDF·CSV 내보내기를 지원하며, 모든 데이터는 온디바이스에만 저장됩니다.
+        </p>
+        <div class="cases-grid">
+          <div class="case-card">
+            <p class="case-num">CASE 01 · OCR 정확도</p>
+            <p class="case-title">ML Kit → 멀티모달 LLM 전환</p>
+            <p class="case-detail">452줄의 하드코딩 정규식을 Firebase Gemini AI + JSON Schema 강제 응답으로 전환하여 서식 누락·오분류 문제를 근본적으로 해결했습니다.</p>
+            <div class="metrics">
+              <span class="metric">↓ 처리 시간 70% 단축</span>
+              <span class="metric">정규식 452줄 제거</span>
+            </div>
+          </div>
+          <div class="case-card">
+            <p class="case-num">CASE 02 · 데이터 영속성</p>
+            <p class="case-title">Room Migration + Reactive Flow</p>
+            <p class="case-detail">MIGRATION_3_4 격리와 Reactive Flow를 연동해 스키마 변경 시에도 데이터가 유실되지 않도록 구성했습니다.</p>
+            <div class="metrics"><span class="metric">데이터 100% 무손실 검증</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="activities">
+    <p class="section-label">Activities</p>
+    <a href="https://info62991.tistory.com" target="_blank" class="blog-card">
+      <div class="blog-icon">✍️</div>
+      <div class="blog-text">
+        <h3>기술 블로그 운영</h3>
+        <p>문제를 해결하는 과정에서 남긴 학습 기록과 회고 · info62991.tistory.com</p>
+      </div>
+      <span class="blog-arrow">→</span>
+    </a>
+  </section>
+
+  <footer>
+    <span>이태수 · Android Developer</span>
+    <span>pasic1@naver.com · 010-2994-9272</span>
+  </footer>
+
+</div>
+</body>
+</html>
