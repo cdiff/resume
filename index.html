@@ -383,6 +383,27 @@
       background: var(--accent-light);
     }
 
+    .test-access { margin-top: 12px; }
+    .test-access summary {
+      width: fit-content;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .test-access summary:hover { color: var(--accent); }
+    .test-access summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    .test-access p {
+      margin: 10px 0;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
     .project-body {
       padding: 20px 28px 24px;
       background: var(--surface);
@@ -655,13 +676,21 @@
           <div class="project-meta">
             <span class="meta-chip">📅 2025.11 — 2026.06 · 8개월</span>
             <span class="meta-chip">👥 2인 · Android 전 기능 단독 담당</span>
-            <span class="meta-chip">🚀 Play Store 프로덕션 배포</span>
+            <span class="meta-chip">🧪 비공개 테스트 · 프로덕션 심사 중</span>
           </div>
         </div>
         <div class="project-links">
-          <a href="https://play.google.com/store/apps/details?id=com.flowdesk.android" target="_blank" class="link-btn">▶ Play Store</a>
           <a href="https://github.com/cdiff/flowdeskandroid" target="_blank" class="link-btn">🐙 GitHub</a>
         </div>
+        <details class="test-access">
+          <summary>비공개 테스트 안내</summary>
+          <p>Google 계정으로 로그인한 뒤 테스터 그룹 가입 → 테스트 참여 → 앱 설치 순서로 진행합니다. 비공개 테스트 앱은 참여한 계정에서만 확인할 수 있습니다.</p>
+          <div class="project-links">
+            <a href="https://groups.google.com/g/flowdesk-testers" target="_blank" rel="noopener noreferrer" class="link-btn">1. 테스터 그룹 가입</a>
+            <a href="https://play.google.com/apps/testing/com.flowdesk.android" target="_blank" rel="noopener noreferrer" class="link-btn">2. 테스트 참여</a>
+            <a href="https://play.google.com/store/apps/details?id=com.flowdesk.android" target="_blank" rel="noopener noreferrer" class="link-btn">3. 테스트 앱 설치</a>
+          </div>
+        </details>
       </div>
       <div class="project-body">
         <p class="project-summary">
@@ -707,7 +736,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://play.google.com/store/apps/details?id=com.pasic.receipt" target="_blank" class="link-btn">▶ Play Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.pasic.receipt&amp;hl=ko" target="_blank" rel="noopener noreferrer" class="link-btn">▶ Play Store</a>
           <a href="https://github.com/cdiff/Receipt" target="_blank" class="link-btn">🐙 GitHub</a>
         </div>
       </div>
